@@ -93,24 +93,24 @@ def run_bilateral_filter(filename, diameter, sigma_i, sigma_space):
     
     print(src)
     
-    i = 0
-    while i < len(src):
-        j = 0
-        while j < len(src[0]):
-            src[i][j] = src[i][j] + 1.0
-            j += 1
-        i += 1
-    
+#    i = 0
+#    while i < len(src):
+#        j = 0
+#        while j < len(src[0]):
+#            src[i][j] = src[i][j] + 1.0
+#            j += 1
+#        i += 1
+#    
     
     filtered_image = bilateral_filter(src, diameter, sigma_i, sigma_space)
 
-    i = 0
-    while i < len(src):
-        j = 0
-        while j < len(src[0]):
-            filtered_image[i][j] = filtered_image[i][j] - 1.0
-            j += 1
-        i += 1
+#    i = 0
+#    while i < len(src):
+#        j = 0
+#        while j < len(src[0]):
+#            filtered_image[i][j] = filtered_image[i][j] - 1.0
+#            j += 1
+#        i += 1
 
     
     print(filtered_image)

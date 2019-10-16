@@ -1,0 +1,308 @@
+a
+a.shape
+b = a.view((np.uint16, 2))
+b = a.view((np.uint16, 1))
+b.shape
+import cv2
+cv2.imwrite("test.jp2", b)
+set OPENCV_IO_ENABLE_JASPER=ON
+set OPENCV_IO_ENABLE_JASPER:ON
+
+## ---(Wed Oct 16 13:59:23 2019)---
+import glymur, numpy as np
+pwd
+cd Development/
+cd bilateral-filter/
+pwd
+jp2 = glymur.Jp2k('zeros.jp2', data=np.zeros((640, 480), dtype=np.uint8))
+jp2 = glymur.Jp2k('zeros.jp2', data=np.zeros((640, 480), dtype=np.float32))
+jp2 = glymur.Jp2k('zeros.jp2', data=np.zeros((640, 480), dtype=np.uint16))
+a = run_bilateral_filter('Z_l3.png', 3, 0.01, 0.5)
+from bilateral_filter import run_bilateral_filter
+a = run_bilateral_filter('Z_l3.png', 3, 0.01, 0.5)
+b = a.view((np.uint16, 2))
+b = a.view((np.uint16, 1))
+b
+jp2 = glymur.Jp2k('zeros.jp2', b)
+b.shape
+jp2 = glymur.Jp2k('zeros.jp2', b[:,:,0])
+jp2 = glymur.Jp2k('zeros2.jp2', b[:,:,1])
+import cv2
+im = cv2.imread('Z_l0.png', cv2.IMREAD_UNCHANGED)
+im
+im.shape
+jp2 = glymur.Jp2k('Z_l0_converted.jp2', im)
+r = im[:,:,0]
+im[:,:,0] = im[:,:,1]
+im[:,:,1] = r
+jp2 = glymur.Jp2k('Z_l0_converted.jp2', im)
+from glymur.core import COLOR, OPACITY
+ctype = [COLOR, COLOR, COLOR, OPACITY]
+from glymur.core import RED, GREEN, BLUE, WHOLE_IMAGE
+asoc = [RED, GREEN, BLUE, WHOLE_IMAGE]
+cdef = glymur.jp2box.ChannelDefinitionBox(ctype, asoc)
+print(cdef)
+boxes = jp2.box
+boxes[2].box.append(cdef)
+jp2_rgba = jp2.wrap("goodstuff_rgba.jp2", boxes=boxes)
+inim = cv2.imread('Z_l0.png', cv2.IMREAD_UNCHANGED)
+inim = inim.view((np.uint8, 4))
+inim.shape
+jp2 = glymur.Jp2k('Z_l0_converted.jp2', inim)
+boxes = jp2.box
+boxes[2].box.append(cdef)
+jp2_rgba = jp2.wrap("goodstuff_rgba.jp2", boxes=boxes)
+cv2.imwrite('test.png', inim)
+jp2 = glymur.Jp2k('Z_l0_converted_0.jp2', inim[:,:,0])
+jp2 = glymur.Jp2k('Z_l0_converted_0.jp2', inim[:,:,1])
+jp2 = glymur.Jp2k('Z_l0_converted_0.jp2', inim[:,:,0])
+jp2 = glymur.Jp2k('Z_l0_converted_1.jp2', inim[:,:,1])
+jp2 = glymur.Jp2k('Z_l0_converted_2.jp2', inim[:,:,2])
+jp2 = glymur.Jp2k('Z_l0_converted_3.jp2', inim[:,:,3])
+a = run_bilateral_filter('Z_l3.png', 3, 0.01, 1)
+a = run_bilateral_filter('Z_l3.png', 3, 0.1, 1)
+a = run_bilateral_filter('Z_l3.png', 3, 0.01, 1.5)
+a = run_bilateral_filter('Z_l3.png', 3, 0.001, 2)
+a = run_bilateral_filter('Z_l3.png', 3, 2, 2)
+a = run_bilateral_filter('Z_l0_crop.png', 3, 0.1, 2)
+inim = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+inim.shape
+inim
+f = inim.view((np.float32,1))
+f
+inim
+a = cv2.imwread('Z_L0.png', cv2.IMREAD_UNCHANGED)
+a = cv2.imread('Z_L0.png', cv2.IMREAD_UNCHANGED)
+a
+a.shape
+b = a[1:200,1:200,:]
+b
+cv2.imwrite('Z_l0_crop.png', b)
+b = a[1:500,1:500,:]
+cv2.imwrite('Z_l0_crop.png', b)
+a = run_bilateral_filter('Z_l0_crop.png', 3, 0.1, 2)
+blur = cv2.blur(b,(5,5))
+cv2.imwrite('Z_l0_crop_blur5.png', blur)
+blur = cv2.blur(b,(3,3))
+cv2.imwrite('Z_l0_crop_blur5.png', blur)
+cv2.imwrite('Z_l0_crop_blur3.png', blur)
+blur = cv2.blur(b,(5,5))
+cv2.imwrite('Z_l0_crop_blur5.png', blur)
+gblur = cv2.GaussianBlur(b,(5,5),0)
+cv2.imwrite('Z_l0_crop_gblur5.png', gblur)
+gblur = cv2.GaussianBlur(b,(3,3),0)
+cv2.imwrite('Z_l0_crop_gblur3.png', gblur)
+cv2.imwrite('Z_l0_crop_blur3.png', blur)cd ..
+cd ..
+cd EclConverter/
+ConvertEclToImages.py
+runfile('C:/Users/sicatrb/Development/EclConverter/ConvertEclToImages.py', wdir='C:/Users/sicatrb/Development/EclConverter')
+pwd
+runfile('C:/Users/sicatrb/Development/EclConverter/ConvertEclToImages.py', wdir='C:/Users/sicatrb/Development/EclConverter')
+
+## ---(Wed Oct 16 15:33:28 2019)---
+runfile('C:/Users/sicatrb/Development/EclConverter/ConvertEclToImages.py', wdir='C:/Users/sicatrb/Development/EclConverter')
+runfile('C:/Users/sicatrb/Development/EclConverter/ConvertEclToImages.py', wdir='C:/Users/sicatrb/Development/EclConverter')
+runfile('C:/Users/sicatrb/Development/EclConverter/ConvertEclToImages2.py', wdir='C:/Users/sicatrb/Development/EclConverter')
+from ecl import EclGrid
+from ecl.grid import EclGrid
+pwd
+cd ..
+cd bilateral-filter/
+import cv2
+im = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+im
+imf = im.view((np.float32, 1))
+import numpy as np
+imf = im.view((np.float32, 1))
+imf
+imf = imf * 5000
+imf
+imf = imf + 5000
+imf
+imf = imf * 1000
+imf
+import math
+imf = floor(imf)
+imf = math.floor(imf)
+imf = imf * 10
+imf
+cv2.imwrite('imf.png', imf.view((np.uint8, 4)))
+imf.shape
+imu = imf.view((np.uint8, 4))
+imu
+imu.shape
+imu = imu[:,:,0,:]
+cv2.imwrite('imf.png', imu)
+imf
+im = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+imf = im.view((np.float32, 1))
+imf
+imf = imf + 1
+imf
+imf = imf * 1000000000
+imf
+imf = imf / 10
+imf
+imf = imf / 10
+imf
+imf = im.view((np.float32, 1))
+imf
+imf = imf + 1
+imf = imf * 5000000
+imf
+imf = imf.view((np.int32, 1))
+imf
+imf = im.view((np.float32, 1))
+imf
+imf = imf * 500000
+imf = imf + 500000
+imf
+imf.round(0)
+imf
+imf = imf.round(0)
+imf
+imf.dtype
+imf = im.view((np.float32, 1))
+imf.dtype
+imf = imf * 50000
+imf.dtype
+imf = imf + 50000
+imf.dtype
+imf
+imf = imf.round(0)
+imf
+cv2.imwrite('imf.png', imf)
+imb = imf.view((np.uint8, 4))
+imb
+img.shape
+imb.shape
+imb = imb[:,:,0,:]
+imb = imf.view((np.uint8, 4))
+imb = imb[:,:,0,:]
+cv2.imwrite('imf.png', imb)
+imbf = imb.view((np.float32, 1))
+imbf
+imbf = imbf - 50000
+imbf = imbf / 50000
+imbf
+imbfu = imbf.view((np.uint8, 4))
+imbfu.shape
+imbfu = imbfu[:,:,0,:]
+cv2.imwrite('imbfu.png', imbfu)
+imbf
+imf = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+imf
+imf = imf.view((np.float32, 1))
+imf
+a = cv2.imread('Z_L3.png', cv2.IMREAD_UNCHANGED)
+b = cv2.imread('filtered_Z_l3.png_d3_si2_ss2.png', cv2.IMREAD_UNCHANGED)
+a
+a = a.view((np.float32, 1))
+b = b.view((np.float32, 1))
+a
+b
+b = cv2.imread('filtered_Z_l3.png_d3_si0.01_ss1.png', cv2.IMREAD_UNCHANGED)
+b = b.view((np.float32, 1))
+b
+a
+a = cv2.imread('Z_L0.png', cv2.IMREAD_UNCHANGED)
+b = cv2.imread('filtered_Z_l0.png_d3_si0.01_ss0.5.png', cv2.IMREAD_UNCHANGED)
+b = b.view((np.float32, 1))
+a = a.view((np.float32, 1))
+a
+b
+ai = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+ai = ai.view((np.float32, 1))
+ai
+ai = ai * 100000
+ai = ai + 100000
+ai
+ai.round(0)
+ai.dtype
+ai = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+ai = ai.view((np.float32, 1))
+ai = ai * 1000
+ai.dtype
+ai = ai + 1000
+ai.dtype
+ai
+ai.round(0)
+ai
+ai = ai * 1000
+ai.dtpe
+ai.dtype
+ai
+ai = ai / 1000000
+ai
+ai.dtype
+ai = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+ai = ai.view((np.float32, 1))
+ai = ai * 10000
+ai.dtype
+ai = ai / 1000
+ai = ai * 1000000
+ai
+ai = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+ai = ai.view((np.float32, 1))
+ai = ai + 1
+ai = ai * 500000
+ai
+ai.dtype
+ai = cv2.imread('Z_l0_crop.png', cv2.IMREAD_UNCHANGED)
+ai = ai.view((np.float32, 1))
+ab = ai + 1
+ab
+ab = ab * 10000
+ab
+ab = ab * 100
+ab
+ab = ab.round(0)
+ab
+abu = ab.view((np.uint8, 4))
+abu
+abu = abu[:,:,0,:]
+abu
+cv2.imwrite('abu.png', abu)
+from bilateral_filter import run_bilateral_filter
+ab
+ab = ab.astype(np.int32)
+ab
+abu = ab.view((np.uint8, 4))
+cv2.imwrite('abu.png', abu)
+abu.shape
+abu = abu[:,:,0,:]
+cv2.imwrite('abu.png', abu)
+abu
+abu.shape
+a = abu[:,:,0]
+abu[:,:,0] = abu[:,:,3]
+abu[:,:,3] = a
+abu
+abu[:,:,3] = a
+a
+abu = cv2.imread('abu.png')
+abu
+abu = cv2.imread('abu.png', cv2.IMREAD_UNCHANGED)
+abu
+abb = abu[:,:,0]
+abb
+abu[:,:,0] = abu[:,:,3]
+abu
+abu[:,:,3] = abb
+abu
+abu.shape
+abu = cv2.imread('abu.png', cv2.IMREAD_UNCHANGED)
+abb = abu[:,:,1]
+abb
+abu
+abb = abu[:,:,0]
+abb
+abb.shape
+ax = abb
+ax
+abu[:,:,3] = ax
+abu
+abu[:,:,0] = 0
+abu
+cv2.imwrite('abu.png', abu)
