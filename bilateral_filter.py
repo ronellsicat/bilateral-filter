@@ -9,16 +9,29 @@ import cv2
 import numpy as np
 import math
 
-
-def distance(x, y, i, j):
-    return np.sqrt((x-i)**2 + (y-j)**2)
-
-
-def gaussian(x, sigma):
+def gaussianF(x, sigma):
     return (1.0 / (2 * math.pi * (sigma ** 2))) * math.exp(- (x ** 2) / (2 * sigma ** 2))
 
+def gaussianApprox(x, sigma):
+    
+    alpha = 0.5 / sigma
+    
+    x *= alpha
+    if(x < -2):
+	    return 0
+    if(x < -1):
+	    x += 2
+	    return x * x * x
+    if(x < 0):
+	    return (4 - 3*x*x*(2 + x))
+    if(x < 1):
+	    return (4 - 3*x*x*(2 - x))
+    if(x < 2):
+	    x = 2-x
+	    return x * x * x
+    return 0
 
-def apply_bilateral_filter(source, filtered_image, x, y, diameter, sigma_i, sigma_s):
+def filter_pixel(source, filtered_image, x, y, diameter, sigma_i, sigma_s):
     hl = math.floor(diameter/2)
     c = 0
     i_filtered = 0
@@ -26,17 +39,21 @@ def apply_bilateral_filter(source, filtered_image, x, y, diameter, sigma_i, sigm
     i = 0
     while i < diameter:
         j = 0
+        neighbour_x = x - (hl - i)
+        if neighbour_x >= len(source):
+            neighbour_x -= len(source)
+                
+        gx = gaussianApprox(neighbour_x - x, sigma_s)
+        
         while j < diameter:
-            neighbour_x = x - (hl - i)
-            neighbour_y = y - (hl - j)
-            if neighbour_x >= len(source):
-                neighbour_x -= len(source)
+            
+            neighbour_y = y - (hl - j)   
             if neighbour_y >= len(source[0]):
                 neighbour_y -= len(source[0])
-                
+            gy = gaussianApprox(neighbour_y - y, sigma_s)    
              
-            gi = gaussian(source[neighbour_x][neighbour_y] - source[x][y], sigma_i)
-            gs = gaussian(distance(neighbour_x, neighbour_y, x, y), sigma_s)
+            gi = gaussianApprox(source[neighbour_x][neighbour_y] - source[x][y], sigma_i)
+            gs = gx * gy
             if(c == 0 and x == 10 and y == 10):       
                 
                 print("x,y = " + str(neighbour_x) + ", " + str(neighbour_y) + ": gi(" + str(source[neighbour_x][neighbour_y] - source[x][y]) + ") = " + str(gi) + ", gs = " + str(gs) + "\n")
@@ -64,7 +81,7 @@ def bilateral_filter(source, filter_diameter, sigma_i, sigma_s):
     while i < len(source):
         j = 0
         while j < len(source[0]):
-            apply_bilateral_filter(source, filtered_image, i, j, filter_diameter, sigma_i, sigma_s)
+            filter_pixel(source, filtered_image, i, j, filter_diameter, sigma_i, sigma_s)
             j += 1
         i += 1
     return filtered_image
@@ -106,18 +123,3 @@ def run_bilateral_filter(filename, diameter, sigma_i, sigma_space):
                 "_ss" + str(sigma_space) + ".png", filtered_image)
     
     return filtered_image
-#
-#if __name__ == "__main__":
-#    filename = str(sys.argv[1])
-#    src = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
-#    src = src.view((np.float32, 1))
-#    
-#    #filtered_image_OpenCV = cv2.bilateralFilter(src, 5, 12.0, 16.0)
-#    #cv2.imwrite("original_image_grayscale.png", src)
-#    #cv2.imwrite("filtered_image_OpenCV.png", filtered_image_OpenCV)
-#    diameter = sys.argv[2]
-#    sigma_i = sys.argv[3]
-#    sigma_space = sys.argv[4]
-#    filtered_image = bilateral_filter(src, diameter, sigma_i, sigma_space)
-#    cv2.imwrite("filtered_" + filename  + "_d" + diameter + "_si" + sigma_i +
-#                "_ss" + sigma_space + ".png", filtered_image)
